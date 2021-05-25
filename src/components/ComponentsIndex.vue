@@ -425,6 +425,7 @@ export default {
     @at-root .right & {
       right: auto;
       left: 20px;
+      flex-direction: row-reverse;
     }
 
     > div {
