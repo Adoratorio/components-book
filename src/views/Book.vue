@@ -1,6 +1,7 @@
 <template>
-  <div class="components-book book">
-    <ComponentsIndex />
+  <div class="components-book book" :class="{ center }">
+    <ComponentsGrid v-if="hasGrid" />
+    <ComponentsIndex @togglegrid="hasGrid = !hasGrid" @togglecenter="center = !center" />
 
     <component
       :is="$route.params.component"
@@ -11,6 +12,7 @@
 
 <script>
 import ComponentsIndex from '../components/ComponentsIndex.vue';
+import ComponentsGrid from '../components/ComponentsGrid.vue';
 import definitions from '../assets/definitions';
 
 export default {
@@ -18,6 +20,14 @@ export default {
 
   components: {
     ComponentsIndex,
+    ComponentsGrid,
+  },
+
+  data() {
+    return {
+      hasGrid: false,
+      center: false,
+    };
   },
 
   computed: {
@@ -33,3 +43,20 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.book {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  &.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+</style>
