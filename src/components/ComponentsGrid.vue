@@ -7,12 +7,6 @@
 <script>
 export default {
   name: 'ComponentsGrid',
-
-  data() {
-    return {
-      gridWidth: window.innerWidth / 15,
-    };
-  },
 };
 </script>
 
