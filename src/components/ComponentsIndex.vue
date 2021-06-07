@@ -301,6 +301,8 @@ export default {
 
   box-shadow: 0px 5px 30px rgba($color: black, $alpha: 0.17);
 
+  z-index: 1000;
+
   @media screen and (max-width: 768px) {
     display: none;
   }
