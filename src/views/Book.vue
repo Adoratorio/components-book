@@ -35,11 +35,22 @@ export default {
       return definitions;
     },
     presetProps() {
-      const { props } = definitions
-        .get(this.$route.params.component)
-        .presets[this.$route.params.preset];
-      return typeof props === 'function' ? props() : props;
+      try {
+        const { props } = definitions
+          .get(this.$route.params.component)
+          .presets[this.$route.params.preset];
+        return typeof props === 'function' ? props() : props;
+      } catch { return {}; }
     },
+  },
+
+  created() {
+    if (
+      typeof this.$route.params.component === 'undefined'
+      || typeof this.$route.params.preset === 'undefined'
+    ) {
+      this.$router.push(`/book/${[...definitions][0][0]}/default`);
+    }
   },
 };
 </script>
