@@ -1,7 +1,7 @@
 <template>
   <div class="components-book book" :class="{ center }">
     <ComponentsGrid v-if="hasGrid" />
-    <ComponentsIndex @togglegrid="hasGrid = !hasGrid" @togglecenter="center = !center" />
+    <ComponentsIndex @togglegrid="toggleGrid" @togglecenter="toggleCenter" />
 
     <component
       :is="$route.params.component"
@@ -16,7 +16,7 @@ import ComponentsGrid from '../components/ComponentsGrid.vue';
 import definitions from '../assets/definitions';
 
 export default {
-  name: 'Book',
+  name: 'book', // eslint-disable-line
 
   components: {
     ComponentsIndex,
@@ -51,6 +51,24 @@ export default {
     ) {
       this.$router.push(`/book/${[...definitions][0][0]}/default`);
     }
+  },
+
+  mounted() {
+    const hasGrid = JSON.parse(localStorage.getItem('book:hasgrid'));
+    if (hasGrid !== null) this.hasGrid = hasGrid;
+    const center = JSON.parse(localStorage.getItem('book:center'));
+    if (center !== null) this.center = center;
+  },
+
+  methods: {
+    toggleGrid() {
+      this.hasGrid = !this.hasGrid;
+      localStorage.setItem('book:hasgrid', this.hasGrid.toString());
+    },
+    toggleCenter() {
+      this.center = !this.center;
+      localStorage.setItem('book:center', this.center.toString());
+    },
   },
 };
 </script>
