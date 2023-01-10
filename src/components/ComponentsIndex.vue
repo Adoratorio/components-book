@@ -348,6 +348,10 @@ export default {
       background-color: #292929;
     }
 
+    & .components-index__toolbar {
+      background-color: #171717;
+    }
+
     & .components-index__toolbar > div:hover {
       background-color: #292929;
     }
@@ -432,20 +436,26 @@ export default {
   }
 
   &__toolbar {
-    position: absolute;
-    bottom: 10px;
-    right: 20px;
+    position: sticky;
+    bottom: 0px;
+    margin: 20px auto;
+    margin-bottom: 0;
+    width: 90%;
 
     display: flex;
+    justify-content: space-between;
     align-items: center;
+
+    padding: 5px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.17);
 
     @at-root .hidden & {
       pointer-events: all;
     }
 
     @at-root .right & {
-      right: auto;
-      left: 20px;
       flex-direction: row-reverse;
     }
 
