@@ -274,6 +274,8 @@ export default {
     if (position !== null) this.position = position;
     const dark = JSON.parse(localStorage.getItem('book:dark'));
     if (dark !== null) this.dark = dark;
+
+    this.$el.querySelector('.component.active').scrollIntoView();
   },
 
   methods: {
