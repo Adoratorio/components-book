@@ -1,14 +1,8 @@
 <template>
   <div class="components-book components-grid">
-    <div v-for="(line, index) in (15 * 15)" :key="index" class="square"></div>
+    <div v-for="(line, index) in (15 * 15)" :key="index" class="square" />
   </div>
 </template>
-
-<script>
-export default {
-  name: 'ComponentsGrid',
-};
-</script>
 
 <style lang="scss" scoped>
 .components-grid {
